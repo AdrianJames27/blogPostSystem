@@ -6,6 +6,7 @@ body {
     margin: 0; /* Remove default margin */
     background-color: #f8f9fa;
 }
+
 .container {
     margin-top: 50px;
     width: 100%; /* Full width */
