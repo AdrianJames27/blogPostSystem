@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    background-color: #f8f9fa;
+}
+.container {
+    margin-top: 50px;
+    width: 100%; /* Full width */
+    max-width: 800px; /* Max width for the container */
+}
+
+.blog-container {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.time-elapsed {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.input-fixed-width, .textarea-fixed-width {
+    width: 100%; /* Ensure both elements have the same width */
+    box-sizing: border-box;
+}

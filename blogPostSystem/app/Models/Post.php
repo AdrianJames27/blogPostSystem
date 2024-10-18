@@ -21,4 +21,8 @@ class Post extends Model
         'blog_title',
         'blog_body'
     ];
+
+    protected $hidden = [
+        'blog_id'
+    ];
 }

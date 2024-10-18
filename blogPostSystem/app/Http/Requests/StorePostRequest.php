@@ -22,7 +22,16 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'blog_title' => 'required|string|unique:posts,blog_title'
+            'blog_title' => 'required|string|max:100|unique:posts,blog_title',
+            'blog_body' => 'required|string|max:255'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'blog_title.required' => 'The blog title is required.',
+            'blog_body.required' => 'The blog body is required.'
         ];
     }
 }
