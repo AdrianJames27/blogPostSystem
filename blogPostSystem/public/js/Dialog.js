@@ -334,6 +334,8 @@ class Dialog {
                 min-height: 150px;
                 font-family: Arial, sans-serif;
                 background-color: #f9f9f9;
+                animation: fade-in 0.3s ease;
+                animation-fill-mode: forwards;
             }
     
             dialog #title {
@@ -406,6 +408,11 @@ class Dialog {
                 display: none;
             }
     
+            @keyframes fade-in {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
             @media only screen and (max-width: 768px) {
                 dialog {
                     max-width: 85vw;
