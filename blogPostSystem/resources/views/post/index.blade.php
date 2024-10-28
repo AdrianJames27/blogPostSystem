@@ -55,7 +55,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
             crossorigin="anonymous"
         ></script>
-        <script src="{{ asset('js/Dialog.js') }}"></script>
+        <script src="https://res.cloudinary.com/dy0sbkf3u/raw/upload/Dialog.min.js"></script>
         <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

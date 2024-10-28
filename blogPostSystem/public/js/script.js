@@ -3,19 +3,16 @@ $(document).ready(function() {
         e.preventDefault();
 
         const title = sanitizeInput($('#txtTitle').val());
-        const body = sanitizeInput($('#txtBody').val())
-
-        const blog = {
-            blog_title: title,
-            blog_body: body,
-            _token: $('meta[name="csrf-token"]').attr('content')
-        };
+        const body = sanitizeInput($('#txtBody').val());
 
         $.ajax({
             url: '/post/add',
             type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(blog),
+            data: {
+                blog_title: title,
+                blog_body: body,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
             success: function(response) {
                 getPost(response.data);
 
@@ -25,20 +22,14 @@ $(document).ready(function() {
                 Dialog.showMessageDialog('^_^', 'Your post has been uploaded!');
             },
             error: function(xhr) {
-                if (xhr.status === 419) {
-                    Dialog.showMessageDialog('Nuh uh..', 'Invalid CSRF token.');
-                } else if (xhr.status === 422) {
-                    const errors = xhr.responseJSON.errors;
-                    let errorMessage = '';
+                const errors = xhr.responseJSON.errors;
+                let errorMessage = '';
 
-                    Object.keys(errors).forEach(function(key) {
-                        errorMessage += `- ${errors[key][0]}\n`;
-                    });
-                    
-                    Dialog.showMessageDialog('Oops!', errorMessage);
-                } else {
-                    Dialog.showMessageDialog('Ehh?', 'Unexpected error occured.');
-                }
+                Object.keys(errors).forEach(function(key) {
+                    errorMessage += `- ${errors[key][0]}\n`;
+                });
+                
+                Dialog.showPlainDialog(`Oops! Error Code ${xhr.status}\n\n` + errorMessage);
             }
         });
     });
@@ -101,15 +92,7 @@ $(document).ready(function() {
         }, 1000);
     }
 
-    function sanitizeInput(string) {
-        // Regular expression to check for HTML tags
-        const htmlTagPattern = /<[^>]*>/;
-    
-        // Check if the string contains any HTML tags
-        if (htmlTagPattern.test(string)) {
-            return string.replace(/<[^>]*>/g, '');
-        }
-
-        return string;
+    function sanitizeInput(str) {
+        return str.replace(/<[^>]*>/g, '');
     }
 });
