@@ -22,7 +22,7 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'blog_title' => 'required|string|max:100|unique:posts,blog_title',
+            'blog_title' => 'required|string|max:50|unique:posts,blog_title',
             'blog_body' => 'required|string|max:255'
         ];
     }

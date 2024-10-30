@@ -32,21 +32,9 @@
                 </form>
             </div>
             <hr class="my-4">
-            <div class="post-list">
-                <h1>Post List</h1>
-                @forelse ($posts as $post)
-                    <div class="blog-container">
-                        <div class="blog-title d-flex justify-content-between">
-                            <h4>{{ $post->blog_title }}</h4>
-                            <p class="time-elapsed" data-created-at="{{ $post->created_at }}"></p>
-                        </div>
-                        <div class="blog-body">
-                            <p>{{ $post->blog_body }}</p>
-                        </div>
-                    </div>
-                @empty
-                    <div class="blog-container">No post uploaded yet</div>
-                @endforelse
+            <h1>Post List</h1>
+            <div id="postList">
+                <!-- post list will appear here -->
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

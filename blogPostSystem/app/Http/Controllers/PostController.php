@@ -9,26 +9,20 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // index page
     public function index()
     {
-        $posts = Post::all();
-        return view('post.index', compact('posts'));
+        return view('post.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // get all blog posts
+    public function getPosts()
     {
-        //
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('post.post_list', compact('posts'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // store the blog post
     public function store(StorePostRequest $request)
     {
         $post = Post::create([
@@ -41,42 +35,5 @@ class PostController extends Controller
             'message' => 'Successfully Uploaded!',
             'data' => $post
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request)
-    {
-        $post = Post::where('blog_title', $request->blog_title)->orderBy('blog_id', 'desc')->first();
-
-        return response()->json([
-            'status' => 200,
-            'data' => $post
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePostRequest $request, Post $post)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Post $post)
-    {
-        //
     }
 }

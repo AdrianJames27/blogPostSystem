@@ -8,5 +8,5 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/', [PostController::class, 'index']);
-Route::get('/post/get', [PostController::class, 'show']);
+Route::get('/post/all', [PostController::class, 'getPosts']);
 Route::post('/post/add', [PostController::class, 'store']);
